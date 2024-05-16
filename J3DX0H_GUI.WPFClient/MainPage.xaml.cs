@@ -1,5 +1,4 @@
 ﻿using J3DX0H_GUI.WPFClient.AlbumView;
-using J3DX0H_GUI.WPFClient.BandView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +17,30 @@ using System.Windows.Shapes;
 namespace J3DX0H_GUI.WPFClient
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
-            this.mainFrame.Content = new MainPage();
+        }
+
+        private void NavigatePage1(object sender, MouseButtonEventArgs e)
+        {
+            //Page page1 = new AlbumPage();
+            
+            NavigationService.Navigate(new Uri("AlbumPage", UriKind.Relative));
+        }
+
+        private void NavigatePage2(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void NavigatePage3(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

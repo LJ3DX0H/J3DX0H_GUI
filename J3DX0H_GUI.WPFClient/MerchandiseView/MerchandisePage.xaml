@@ -5,12 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:J3DX0H_GUI.WPFClient.MerchandiseView"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="MerchandisePage">
     <Page.DataContext>
         <local:MerchandisePageViewModel />
     </Page.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <ListBox>
+            
+        </ListBox>
+        <StackPanel>
+            <Label Content="ViewSelect" Background="LightBlue" Padding=" 20" FontSize="20"/>
+            <Button Content="Album" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Merchandise" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="RecordCompany" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Vm" Padding="20" Margin="20" FontSize="20"/>
+        </StackPanel>
     </Grid>
 </Page>

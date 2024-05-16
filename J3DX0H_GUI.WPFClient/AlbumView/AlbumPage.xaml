@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:J3DX0H_GUI.WPFClient.AlbumView"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="AlbumPage">
 
     <Page.DataContext>
@@ -16,6 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <ListBox ItemsSource="{Binding Albums}" SelectedItem="{Binding SelectedAlbum}">
             <ListBox.ItemTemplate>
@@ -25,11 +26,19 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="AlbumTitle" Background="LightGreen" Padding="20" />
+            <Label Content="AlbumTitle" Background="LightGreen" Padding=" 20" />
             <TextBox Text="{Binding SelectedAlbum.AlbumTitle}" Padding="20" Margin="0,0,0,30"/>
-            <Button Content="CreateAlbum" Command="{Binding CreateAlbumCommand}" Margin="20" Padding="20" Click="Button_Click" />
-            <Button Content="DeleteAlbum" Command="{Binding DeleteAlbumCommand}" Margin="20" Padding="20" />
-            <Button Content="UpdateAlbum" Command="{Binding UpdateAlbumCommand}" Margin="20" Padding="20" />
+            <Button Content="Create Album" Command="{Binding CreateAlbumCommand}" Padding="10" Margin="20"/>
+            <Button Content="Delete Album" Command="{Binding DeleteAlbumCommand}" Padding=" 10" Margin=" 20"/>
+            <Button Content="Update Album" Command="{Binding UpdateAlbumCommand}" Padding="10" Margin="20"/>
+            <Label Content="{Binding ErrorMessage}" FontSize="24" Foreground="Red" HorizontalAlignment="Center" />
+        </StackPanel>
+        <StackPanel>
+            <Label Content="ViewSelect" Background="LightBlue" Padding=" 20" FontSize="20"/>
+            <Button Content="Select Bands" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Select Merchandise" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Select Recordcompany" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Select Merchandise" Padding="20" Margin="20" FontSize="20"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -14,6 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <ListBox ItemsSource="{Binding Bands}">
             <ListBox.ItemTemplate>
@@ -22,5 +23,12 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StackPanel>
+            <Label Content="ViewSelect" Background="LightBlue" Padding=" 20" FontSize="20"/>
+            <Button Content="Select Bands" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Select Merchandise" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Select Recordcompany" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Select Merchandise" Padding="20" Margin="20" FontSize="20"/>
+        </StackPanel>
     </Grid>
 </Page>

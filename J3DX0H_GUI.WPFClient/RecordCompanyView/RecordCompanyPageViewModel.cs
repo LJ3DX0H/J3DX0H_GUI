@@ -1,5 +1,4 @@
 ﻿using J3DX0H_GUI.Models;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -7,12 +6,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+using System.Windows;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
-namespace J3DX0H_GUI.WPFClient.BandView
+namespace J3DX0H_GUI.WPFClient.RecordCompanyView
 {
-    public class BandPageViewModel : ObservableRecipient
+    public class RecordCompanyPageViewModel :ObservableRecipient
     {
         private string errorMessage;
 
@@ -21,18 +21,18 @@ namespace J3DX0H_GUI.WPFClient.BandView
             get { return errorMessage; }
             set { SetProperty(ref errorMessage, value); }
         }
-        public RestCollection<Band> Bands { get; set; }
+        public RestCollection<RecordCompany> RecordCompanies { get; set; }
 
-        private Band selectedBand;
+        private RecordCompany selectedRecordCompany;
 
-        public Band SelectedBand
+        public RecordCompany SelectedRecordCompany
         {
-            get { return selectedBand; }
+            get { return selectedRecordCompany; }
             set
             {
                 if (value != null)
                 {
-                    selectedBand = new Band()
+                    selectedRecordCompany = new RecordCompany()
                     {
                         Name = value.Name,
                         Id = value.Id
@@ -40,18 +40,15 @@ namespace J3DX0H_GUI.WPFClient.BandView
                 }
 
                 OnPropertyChanged();
-                (DeleteBandCommand as RelayCommand).NotifyCanExecuteChanged();
+                (DeleteRecordCompanyCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
+        public ICommand CreateRecordCompanyCommand { get; set; }
 
+        public ICommand DeleteRecordCompanyCommand { get; set; }
 
-
-        public ICommand CreateBandCommand { get; set; }
-
-        public ICommand DeleteBandCommand { get; set; }
-
-        public ICommand UpdateBandCommand { get; set; }
+        public ICommand UpdateRecordCompanyCommand { get; set; }
 
 
         public static bool IsInDesignMode
@@ -63,29 +60,29 @@ namespace J3DX0H_GUI.WPFClient.BandView
             }
         }
 
-        public BandPageViewModel()
+        public RecordCompanyPageViewModel()
         {
             if (!IsInDesignMode)
             {
 
 
-                Bands = new RestCollection<Band>("http://localhost:4237/", "Band", "hub");
+                RecordCompanies = new RestCollection<RecordCompany>("http://localhost:4237/", "RecordCompany", "hub");
 
-                CreateBandCommand = new RelayCommand(() =>
+                CreateRecordCompanyCommand = new RelayCommand(() =>
                 {
-                    Bands.Add(new Band
+                    RecordCompanies.Add(new RecordCompany
                     {
-                        Name = SelectedBand.Name
+                        Name = selectedRecordCompany.Name
                     });
                 });
 
 
 
-                UpdateBandCommand = new RelayCommand(() =>
+                DeleteRecordCompanyCommand = new RelayCommand(() =>
                 {
                     try
                     {
-                        Bands.Update(SelectedBand);
+                        RecordCompanies.Update(selectedRecordCompany);
                     }
                     catch (ArgumentException ex)
                     {
@@ -94,16 +91,16 @@ namespace J3DX0H_GUI.WPFClient.BandView
                 });
 
 
-                DeleteBandCommand = new RelayCommand(() =>
+                UpdateRecordCompanyCommand = new RelayCommand(() =>
                 {
-                    Bands.Delete(SelectedBand.Id);
+                    RecordCompanies.Delete(selectedRecordCompany.Id);
                 },
                 () =>
                 {
-                    return SelectedBand != null;
+                    return selectedRecordCompany != null;
                 }
                 );
-                SelectedBand = new Band();
+                selectedRecordCompany = new RecordCompany();
             }
         }
     }
