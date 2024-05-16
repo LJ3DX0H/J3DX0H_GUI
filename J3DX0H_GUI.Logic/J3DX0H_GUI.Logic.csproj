@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\J3DX0H_GUI.Models\J3DX0H_GUI.Models.csproj" />
+    <ProjectReference Include="..\J3DX0H_GUI.Repository\J3DX0H_GUI.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
