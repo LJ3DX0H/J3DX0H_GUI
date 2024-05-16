@@ -6,14 +6,14 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
-    
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />    
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\J3DX0H_GUI.Logic\J3DX0H_GUI.Logic.csproj" />
     <ProjectReference Include="..\J3DX0H_GUI.Models\J3DX0H_GUI.Models.csproj" />
     <ProjectReference Include="..\J3DX0H_GUI.Repository\J3DX0H_GUI.Repository.csproj" />
+    
   </ItemGroup>
 
 </Project>

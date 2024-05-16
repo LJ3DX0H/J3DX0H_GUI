@@ -8,7 +8,28 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AlbumPage">
 
+    <Page.DataContext>
+        <local:AlbumPageViewModel/>
+    </Page.DataContext>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Albums}" SelectedItem="{Binding SelectedAlbum}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding AlbumTitle}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="AlbumTitle" Background="LightGreen" Padding="20" />
+            <TextBox Text="{Binding SelectedAlbum.AlbumTitle}" Padding="20" Margin="0,0,0,30"/>
+            <Button Content="CreateAlbum" Command="{Binding CreateAlbumCommand}" Margin="20" Padding="20" Click="Button_Click" />
+            <Button Content="DeleteAlbum" Command="{Binding DeleteAlbumCommand}" Margin="20" Padding="20" />
+            <Button Content="UpdateAlbum" Command="{Binding UpdateAlbumCommand}" Margin="20" Padding="20" />
+        </StackPanel>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using J3DX0H_GUI.Logic.Interfaces;
+﻿using J3DX0H_GUI.Endpoint.Services;
+using J3DX0H_GUI.Logic.Interfaces;
 using J3DX0H_GUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -11,46 +12,49 @@ namespace J3DX0H_GUI.Endpoint.Controllers
     public class AlbumController : ControllerBase
     {
         IAlbumLogic alogic;
+        IHubContext<SignalRHub> hub;
 
-        public AlbumController(IAlbumLogic alogic)
+
+
+
+        public AlbumController(IAlbumLogic alogic, IHubContext<SignalRHub> hub)
         {
             this.alogic = alogic;
-
+            this.hub = hub;
         }
-
-        // GET: api/<AlbumController>
+        // GET
         [HttpGet]
         public IEnumerable<Album> ReadAll()
         {
             return this.alogic.ReadAll();
         }
 
-        // GET api/<AlbumController>/5
         [HttpGet("{id}")]
         public Album Read(int id)
         {
             return this.alogic.Read(id);
         }
 
-        // POST api/<AlbumController>
         [HttpPost]
         public void Create([FromBody] Album item)
         {
             this.alogic.Create(item);
+            this.hub.Clients.All.SendAsync("AlbumCreated", item);
         }
 
-        // PUT api/<AlbumController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Update([FromBody] Album item)
         {
             this.alogic.Update(item);
+            this.hub.Clients.All.SendAsync("AlbumUpdated", item);
         }
 
-        // DELETE api/<AlbumController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var albumToDelete = this.alogic.Read(id);
             this.alogic.Delete(id);
+            this.hub.Clients.All.SendAsync("AlbumDeleted", albumToDelete);
         }
     }
 }

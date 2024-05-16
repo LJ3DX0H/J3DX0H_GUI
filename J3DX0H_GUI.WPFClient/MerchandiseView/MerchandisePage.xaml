@@ -7,7 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MerchandisePage">
-
+    <Page.DataContext>
+        <local:MerchandisePageViewModel />
+    </Page.DataContext>
     <Grid>
         
     </Grid>

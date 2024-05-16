@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:J3DX0H_GUI.WPFClient"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden">
 
-    </Grid>
+    </Frame>
 </Window>
