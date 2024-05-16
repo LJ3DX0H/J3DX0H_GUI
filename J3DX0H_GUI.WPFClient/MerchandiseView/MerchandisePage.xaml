@@ -17,8 +17,22 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <ListBox>
-            
+            <ListBox ItemsSource="{Binding Merchandises}" SelectedItem="{Binding SelectedMerchandise}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding MerchName}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="Merchandise" Background="LightGreen" Padding=" 20" />
+            <TextBox Text="{Binding SelectedMerchandise.MerchName}" Padding="20" Margin="0,0,0,30"/>
+            <Button Content="Create Merch" Command="{Binding CreateMerchandiseCommand}" Padding="10" Margin="20"/>
+            <Button Content="Delete Merch" Command="{Binding DeleteMerchandiseCommand}" Padding=" 10" Margin=" 20"/>
+            <Button Content="Update Merch" Command="{Binding UpdateMerchandiseCommand}" Padding="10" Margin="20"/>
+            <Label Content="{Binding ErrorMessage}" FontSize="24" Foreground="Red" HorizontalAlignment="Center" />
+        </StackPanel>
         <StackPanel>
             <Label Content="ViewSelect" Background="LightBlue" Padding=" 20" FontSize="20"/>
             <Button Content="Album" Padding="20" Margin="20" FontSize="20"/>

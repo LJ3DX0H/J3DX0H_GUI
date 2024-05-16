@@ -7,7 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RecordCompanyPage">
-
+    <Page.DataContext>
+        <local:RecordCompanyPageViewModel/>
+    </Page.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -15,8 +17,22 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <ListBox>
-            
+            <ListBox ItemsSource="{Binding RecordCompanies}" SelectedItem="{Binding SelectedRecordCompany}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Name}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="BandName" Background="LightGreen" Padding=" 20" />
+            <TextBox Text="{Binding SelectedRecordCompany.Name}" Padding="20" Margin="0,0,0,30"/>
+            <Button Content="Create Band" Command="{Binding CreateRecordCompanyCommand}" Padding="10" Margin="20"/>
+            <Button Content="Delete Band" Command="{Binding DeleteRecordCompanyCommand}" Padding=" 10" Margin=" 20"/>
+            <Button Content="Update Band" Command="{Binding UpdateRecordCompanyCommand}" Padding="10" Margin="20"/>
+            <Label Content="{Binding ErrorMessage}" FontSize="24" Foreground="Red" HorizontalAlignment="Center" />
+        </StackPanel>
         <StackPanel>
             <Label Content="ViewSelect" Background="LightBlue" Padding=" 20" FontSize="20"/>
             <Button Content="Albums" Padding="20" Margin="20" FontSize="20"/>
