@@ -10,22 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace J3DX0H_GUI.WPFClient
 {
     /// <summary>
-    /// Interaction logic for AlbumView.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class AlbumView : UserControl
+    public partial class Window1 : Window
     {
-        private AlbumViewModel _albumViewModel = new AlbumViewModel();
-
-        public AlbumView()
+        public Window1()
         {
             InitializeComponent();
-            DataContext = _albumViewModel;
         }
     }
 }

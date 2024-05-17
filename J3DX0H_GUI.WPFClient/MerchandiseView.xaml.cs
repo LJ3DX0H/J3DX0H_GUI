@@ -18,7 +18,7 @@ namespace J3DX0H_GUI.WPFClient
     /// <summary>
     /// Interaction logic for MerchandiseView.xaml
     /// </summary>
-    public partial class MerchandiseView : Page
+    public partial class MerchandiseView : UserControl
     {
         public MerchandiseView()
         {

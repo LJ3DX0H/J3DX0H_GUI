@@ -6,9 +6,29 @@
         xmlns:local="clr-namespace:J3DX0H_GUI.WPFClient"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden">
-
-    </Frame>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:AlbumViewModel}">
+            <local:AlbumView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:BandViewModel}">
+            <local:BandView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:MerchandiseViewModel}">
+            <local:MerchandiseView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:RecordCompanyViewModel}">
+            <local:RecordCompanyView/>
+        </DataTemplate>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <StackPanel x:Name="navigation" DockPanel.Dock="Left">
+            <Button Content= "Albums" Command="{Binding NavigateToAlbumCommand}"></Button>
+            <Button Content= "Bands" Command="{Binding NavigateToBandCommand}"></Button>
+            <Button Content="Merchandises" Command="{Binding NavigateToMerchandizeCommand}"></Button>
+            <Button Content="RecordCompany" Command="{Binding NavigateToRecordCompany}"></Button>
+        </StackPanel>
+    <ContentControl x:Name="Pages" DockPanel.Dock="Right" Content="{Binding CurrentViewModel}"/>
+    </DockPanel>
 
 </Window>
 

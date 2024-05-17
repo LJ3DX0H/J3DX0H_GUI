@@ -18,7 +18,7 @@ namespace J3DX0H_GUI.WPFClient
     /// <summary>
     /// Interaction logic for BandView.xaml
     /// </summary>
-    public partial class BandView : Window
+    public partial class BandView : UserControl
     {
         public BandView()
         {
