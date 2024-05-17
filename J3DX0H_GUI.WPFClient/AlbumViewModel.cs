@@ -10,9 +10,9 @@ using System.Windows.Input;
 using System.Windows;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 
-namespace J3DX0H_GUI.WPFClient.RecordCompanyView
+namespace J3DX0H_GUI.WPFClient
 {
-    public class RecordCompanyPageViewModel :ObservableRecipient
+    public class AlbumViewModel : ObservableObject
     {
         private string errorMessage;
 
@@ -21,34 +21,38 @@ namespace J3DX0H_GUI.WPFClient.RecordCompanyView
             get { return errorMessage; }
             set { SetProperty(ref errorMessage, value); }
         }
-        public RestCollection<RecordCompany> RecordCompanies { get; set; }
 
-        private RecordCompany selectedRecordCompany;
+        public RestCollection<Album> Albums { get; set; }
 
-        public RecordCompany SelectedRecordCompany
+        private Album selectedAlbum;
+
+        public Album SelectedAlbum
         {
-            get { return selectedRecordCompany; }
+            get { return selectedAlbum; }
             set
             {
                 if (value != null)
                 {
-                    selectedRecordCompany = new RecordCompany()
+                    selectedAlbum = new Album()
                     {
-                        Name = value.Name,
+                        AlbumTitle = value.AlbumTitle,
                         Id = value.Id
                     };
                 }
 
                 OnPropertyChanged();
-                (DeleteRecordCompanyCommand as RelayCommand).NotifyCanExecuteChanged();
+                (DeleteAlbumCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
-        public ICommand CreateRecordCompanyCommand { get; set; }
 
-        public ICommand DeleteRecordCompanyCommand { get; set; }
 
-        public ICommand UpdateRecordCompanyCommand { get; set; }
+
+        public ICommand CreateAlbumCommand { get; set; }
+
+        public ICommand DeleteAlbumCommand { get; set; }
+
+        public ICommand UpdateAlbumCommand { get; set; }
 
 
         public static bool IsInDesignMode
@@ -60,29 +64,29 @@ namespace J3DX0H_GUI.WPFClient.RecordCompanyView
             }
         }
 
-        public RecordCompanyPageViewModel()
+        public AlbumViewModel()
         {
             if (!IsInDesignMode)
             {
 
 
-                RecordCompanies = new RestCollection<RecordCompany>("http://localhost:4237/", "RecordCompany", "hub");
+                Albums = new RestCollection<Album>("http://localhost:4237/", "album", "hub");
 
-                CreateRecordCompanyCommand = new RelayCommand(() =>
+                CreateAlbumCommand = new RelayCommand(() =>
                 {
-                    RecordCompanies.Add(new RecordCompany
+                    Albums.Add(new Album
                     {
-                        Name = selectedRecordCompany.Name
+                        AlbumTitle = SelectedAlbum.AlbumTitle
                     });
                 });
 
 
 
-                DeleteRecordCompanyCommand = new RelayCommand(() =>
+                UpdateAlbumCommand = new RelayCommand(() =>
                 {
                     try
                     {
-                        RecordCompanies.Update(selectedRecordCompany);
+                        Albums.Update(SelectedAlbum);
                     }
                     catch (ArgumentException ex)
                     {
@@ -91,16 +95,16 @@ namespace J3DX0H_GUI.WPFClient.RecordCompanyView
                 });
 
 
-                UpdateRecordCompanyCommand = new RelayCommand(() =>
+                DeleteAlbumCommand = new RelayCommand(() =>
                 {
-                    RecordCompanies.Delete(selectedRecordCompany.Id);
+                    Albums.Delete(SelectedAlbum.Id);
                 },
                 () =>
                 {
-                    return selectedRecordCompany != null;
+                    return SelectedAlbum != null;
                 }
                 );
-                selectedRecordCompany = new RecordCompany();
+                SelectedAlbum = new Album();
             }
         }
     }

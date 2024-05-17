@@ -1,5 +1,4 @@
 ﻿using J3DX0H_GUI.Models;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -9,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
-namespace J3DX0H_GUI.WPFClient.AlbumView
+namespace J3DX0H_GUI.WPFClient
 {
-    public class AlbumPageViewModel : ObservableRecipient
+    public class RecordCompanyViewModel : ObservableRecipient
     {
         private string errorMessage;
 
@@ -21,38 +21,34 @@ namespace J3DX0H_GUI.WPFClient.AlbumView
             get { return errorMessage; }
             set { SetProperty(ref errorMessage, value); }
         }
+        public RestCollection<RecordCompany> RecordCompanies { get; set; }
 
-        public RestCollection<Album> Albums { get; set; }
+        private RecordCompany selectedRecordCompany;
 
-        private Album selectedAlbum;
-
-        public Album SelectedAlbum
+        public RecordCompany SelectedRecordCompany
         {
-            get { return selectedAlbum; }
+            get { return selectedRecordCompany; }
             set
             {
                 if (value != null)
                 {
-                    selectedAlbum = new Album()
+                    selectedRecordCompany = new RecordCompany()
                     {
-                        AlbumTitle = value.AlbumTitle,
+                        Name = value.Name,
                         Id = value.Id
                     };
                 }
 
                 OnPropertyChanged();
-                (DeleteAlbumCommand as RelayCommand).NotifyCanExecuteChanged();
+                (DeleteRecordCompanyCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
+        public ICommand CreateRecordCompanyCommand { get; set; }
 
+        public ICommand DeleteRecordCompanyCommand { get; set; }
 
-
-        public ICommand CreateAlbumCommand { get; set; }
-
-        public ICommand DeleteAlbumCommand { get; set; }
-
-        public ICommand UpdateAlbumCommand { get; set; }
+        public ICommand UpdateRecordCompanyCommand { get; set; }
 
 
         public static bool IsInDesignMode
@@ -64,29 +60,29 @@ namespace J3DX0H_GUI.WPFClient.AlbumView
             }
         }
 
-        public AlbumPageViewModel()
+        public RecordCompanyViewModel()
         {
             if (!IsInDesignMode)
             {
 
 
-                Albums = new RestCollection<Album>("http://localhost:4237/", "album", "hub");
+                RecordCompanies = new RestCollection<RecordCompany>("http://localhost:4237/", "RecordCompany", "hub");
 
-                CreateAlbumCommand = new RelayCommand(() =>
+                CreateRecordCompanyCommand = new RelayCommand(() =>
                 {
-                    Albums.Add(new Album
+                    RecordCompanies.Add(new RecordCompany
                     {
-                        AlbumTitle = SelectedAlbum.AlbumTitle
+                        Name = selectedRecordCompany.Name
                     });
                 });
 
 
 
-                UpdateAlbumCommand = new RelayCommand(() =>
+                DeleteRecordCompanyCommand = new RelayCommand(() =>
                 {
                     try
                     {
-                        Albums.Update(SelectedAlbum);
+                        RecordCompanies.Update(selectedRecordCompany);
                     }
                     catch (ArgumentException ex)
                     {
@@ -95,16 +91,16 @@ namespace J3DX0H_GUI.WPFClient.AlbumView
                 });
 
 
-                DeleteAlbumCommand = new RelayCommand(() =>
+                UpdateRecordCompanyCommand = new RelayCommand(() =>
                 {
-                    Albums.Delete(SelectedAlbum.Id);
+                    RecordCompanies.Delete(selectedRecordCompany.Id);
                 },
                 () =>
                 {
-                    return SelectedAlbum != null;
+                    return selectedRecordCompany != null;
                 }
                 );
-                SelectedAlbum = new Album();
+                selectedRecordCompany = new RecordCompany();
             }
         }
     }

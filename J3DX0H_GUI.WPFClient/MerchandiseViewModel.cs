@@ -1,5 +1,4 @@
 ﻿using J3DX0H_GUI.Models;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -7,12 +6,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+using System.Windows;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
-namespace J3DX0H_GUI.WPFClient.MerchandiseView
+namespace J3DX0H_GUI.WPFClient
 {
-    public class MerchandisePageViewModel : ObservableRecipient
+    public class MerchandiseViewModel : ObservableRecipient
     {
         private string errorMessage;
 
@@ -63,7 +63,7 @@ namespace J3DX0H_GUI.WPFClient.MerchandiseView
             }
         }
 
-        public MerchandisePageViewModel()
+        public MerchandiseViewModel()
         {
             if (!IsInDesignMode)
             {

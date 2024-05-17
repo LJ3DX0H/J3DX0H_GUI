@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace J3DX0H_GUI.WPFClient.BandView
+namespace J3DX0H_GUI.WPFClient
 {
     /// <summary>
-    /// Interaction logic for BandPage.xaml
+    /// Interaction logic for MerchandiseView.xaml
     /// </summary>
-    public partial class BandPage : Page
+    public partial class MerchandiseView : Page
     {
-        public BandPage()
+        public MerchandiseView()
         {
             InitializeComponent();
         }

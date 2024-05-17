@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace J3DX0H_GUI.WPFClient.RecordCompanyView
+namespace J3DX0H_GUI.WPFClient
 {
     /// <summary>
-    /// Interaction logic for RecordCompanyPage.xaml
+    /// Interaction logic for AlbumView.xaml
     /// </summary>
-    public partial class RecordCompanyPage : Page
+    public partial class AlbumView : Window
     {
-        public RecordCompanyPage()
+        public AlbumView()
         {
             InitializeComponent();
         }

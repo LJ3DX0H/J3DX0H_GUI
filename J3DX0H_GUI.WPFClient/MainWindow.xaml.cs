@@ -1,6 +1,4 @@
-﻿using J3DX0H_GUI.WPFClient.AlbumView;
-using J3DX0H_GUI.WPFClient.BandView;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,10 +20,18 @@ namespace J3DX0H_GUI.WPFClient
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
+
             this.mainFrame.Content = new MainPage();
+
+
         }
+
+
     }
+
 }
