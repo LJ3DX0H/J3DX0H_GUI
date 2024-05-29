@@ -6,7 +6,9 @@ using J3DX0H_GUI.Repository.Database;
 using J3DX0H_GUI.Repository.Interfaces;
 using J3DX0H_GUI.Repository.Repositories;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +42,6 @@ namespace J3DX0H_GUI.Endpoint
             services.AddTransient<IRepository<Band>, BandRepository>();
             services.AddTransient<IRepository<RecordCompany>, RecordCompanyRepository>();
 
-
             services.AddTransient<IMerchandiseLogic, MerchandiseLogic>();
             services.AddTransient<IBandLogic, BandLogic>();
             services.AddTransient<IRecordCompanyLogic, RecordCompanyLogic>();
@@ -64,6 +65,15 @@ namespace J3DX0H_GUI.Endpoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "J3DX0H_GUI.Endpoint v1"));
             }
+
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                    .Get<IExceptionHandlerPathFeature>()
+                    .Error;
+                var response = new { Msg = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
 
             app.UseCors(x => x
                 .AllowCredentials()
