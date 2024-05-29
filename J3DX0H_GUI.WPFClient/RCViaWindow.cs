@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace J3DX0H_GUI.WPFClient
 {
-    public class MainWindowViewModel
+    public class RCViaWindow : IRCViaWindowService
     {
-
+        public void Open()
+        {
+            new RecordCompanyView().ShowDialog();
+        }
     }
 }

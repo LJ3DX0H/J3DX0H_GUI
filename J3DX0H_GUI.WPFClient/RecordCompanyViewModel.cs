@@ -66,7 +66,7 @@ namespace J3DX0H_GUI.WPFClient
             {
 
 
-                RecordCompanies = new RestCollection<RecordCompany>("http://localhost:4237/", "RecordCompany", "hub");
+                RecordCompanies = new RestCollection<RecordCompany>("http://localhost:62997/", "RecordCompany", "hub");
 
                 CreateRecordCompanyCommand = new RelayCommand(() =>
                 {

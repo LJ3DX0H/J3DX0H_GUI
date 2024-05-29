@@ -18,14 +18,14 @@ namespace J3DX0H_GUI.WPFClient
     /// <summary>
     /// Interaction logic for AlbumView.xaml
     /// </summary>
-    public partial class AlbumView : UserControl
+    public partial class AlbumView : Window
     {
-        private AlbumViewModel _albumViewModel = new AlbumViewModel();
+
 
         public AlbumView()
         {
             InitializeComponent();
-            DataContext = _albumViewModel;
+
         }
     }
 }

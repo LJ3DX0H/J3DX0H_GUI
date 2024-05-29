@@ -18,11 +18,18 @@ namespace J3DX0H_GUI.WPFClient
     /// <summary>
     /// Interaction logic for MerchandiseView.xaml
     /// </summary>
-    public partial class MerchandiseView : UserControl
+    public partial class MerchandiseView : Window
     {
         public MerchandiseView()
         {
             InitializeComponent();
+            MerchandiseView mV = new MerchandiseView();
+            this.DataContext = mV;
+        }
+
+        private void bV_EditedDone(object sender, EventArgs e)
+        {
+            this.DialogResult = true;
         }
     }
 }

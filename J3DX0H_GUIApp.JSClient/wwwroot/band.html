@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Band UI</title>
+    <link rel="stylesheet" href="bandstyle.css" />
+</head>
+<body>
+    <h1>Band Catalog</h1>
+    <button onclick="myFunc1()">Redirect to Albums</button>
+    <button onclick="myFunc3()">Redirect to Merchandises</button>
+    <button onclick="myFunc4()">Redirect to Record Companies</button>
+    <div id="formdiv">
+        <label>Band Name</label>
+        <input type="text" id="bandname" />
+        <button type="button" onclick="create()">Add Band</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="bandscript.js">
+
+    </script>
+</body>
+</html>

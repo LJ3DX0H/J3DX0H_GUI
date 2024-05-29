@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Album UI</title>
+    <link rel="stylesheet" href="albumstyle.css"/>
+</head>
+<body>
+    <h1>Album Catalog</h1>
+    <button onclick="myFunc2()">Redirect to Bands</button>
+    <button onclick="myFunc3()">Redirect to Merchandises</button>
+    <button onclick="myFunc4()">Redirect to Record Companies</button>
+
+    <div id="formdiv">
+        <label>Actor Name</label>
+        <input type="text" id="albumname" />
+        <button type="button" onclick="create()">Add Actor</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>RecordCompanyId</th>
+                <th>BandId</th>
+                <th>AlbumTitle</th>
+                <th>YearOfPublishing</th>
+                <th>AlbumLength </th>
+                <th>NumberOfTracks </th>
+                <th>CopiesSold</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="albumscript.js">
+
+    </script>
+</body>
+</html>

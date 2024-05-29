@@ -1,15 +1,14 @@
-﻿<UserControl x:Class="J3DX0H_GUI.WPFClient.AlbumView"
+﻿<Window x:Class="J3DX0H_GUI.WPFClient.AlbumView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:J3DX0H_GUI.WPFClient"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
+             d:DesignHeight="450" d:DesignWidth="800" Title="Album Editor">
+    <Window.DataContext>
         <local:AlbumViewModel/>
-    </UserControl.DataContext>
-
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -33,10 +32,10 @@
         </StackPanel>
         <StackPanel>
             <Label Content="ViewSelect" Background="LightBlue" Padding=" 20" FontSize="20"/>
-            <Button Content="Select Bands" Padding="20" Margin="20" FontSize="20"/>
-            <Button Content="Select Merchandise" Padding="20" Margin="20" FontSize="20"/>
-            <Button Content="Select Recordcompany" Padding="20" Margin="20" FontSize="20"/>
-            <Button Content="Select Merchandise" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Bands" Command="{Binding NavToBands}" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Merchandise" Command="{Binding NavToMerch}" Padding="20" Margin="20" FontSize="20"/>
+            <Button Content="Recordcompany" Command="{Binding NavToRC}" Padding="20" Margin="20" FontSize="20"/>
         </StackPanel>
     </Grid>
-</UserControl>
+
+</Window>

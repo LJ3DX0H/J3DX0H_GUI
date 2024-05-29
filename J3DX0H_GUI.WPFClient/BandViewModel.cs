@@ -66,7 +66,7 @@ namespace J3DX0H_GUI.WPFClient
             {
 
 
-                Bands = new RestCollection<Band>("http://localhost:4237/", "Band", "hub");
+                Bands = new RestCollection<Band>("http://localhost:62997/", "Band", "hub");
 
                 CreateBandCommand = new RelayCommand(() =>
                 {

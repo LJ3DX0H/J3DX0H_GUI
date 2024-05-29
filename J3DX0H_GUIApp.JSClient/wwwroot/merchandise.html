@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Merchandise UI</title>
+    <link rel="stylesheet" href="merchandisestyle.css" />
+</head>
+<body>
+    <h1>Merchandise Catalog</h1>
+    <button onclick="myFunc1()">Redirect to Albums</button>
+    <button onclick="myFunc2()">Redirect to Bands</button>
+    <button onclick="myFunc4()">Redirect to Record Companies</button>
+    <div id="formdiv">
+        <label>Actor Name</label>
+        <input type="text" id="merchandisename" />
+        <button type="button" onclick="create()">Add Merchandise</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Merchandise Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="merchandisescript.js">
+
+    </script>
+</body>
+</html>

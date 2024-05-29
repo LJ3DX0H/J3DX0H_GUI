@@ -18,7 +18,7 @@ namespace J3DX0H_GUI.WPFClient
     /// <summary>
     /// Interaction logic for RecordCompanyView.xaml
     /// </summary>
-    public partial class RecordCompanyView : UserControl
+    public partial class RecordCompanyView : Window
     {
         public RecordCompanyView()
         {

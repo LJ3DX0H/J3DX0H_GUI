@@ -46,13 +46,23 @@ namespace J3DX0H_GUI.WPFClient
         }
 
 
-
-
         public ICommand CreateAlbumCommand { get; set; }
 
         public ICommand DeleteAlbumCommand { get; set; }
 
         public ICommand UpdateAlbumCommand { get; set; }
+
+        public ICommand NavToBands { get; set; }
+
+        public ICommand NavToMerch { get; set; }
+
+        public ICommand NavToRC { get; set; }
+
+        public IBandsViaWindowService iBVWS;
+
+        public IMerchViaWindowService iMVWS;
+
+        public IRCViaWindowService iRCVWS;
 
 
         public static bool IsInDesignMode
@@ -70,7 +80,7 @@ namespace J3DX0H_GUI.WPFClient
             {
 
 
-                Albums = new RestCollection<Album>("http://localhost:4237/", "album", "hub");
+                Albums = new RestCollection<Album>("http://localhost:62997/", "album", "hub");
 
                 CreateAlbumCommand = new RelayCommand(() =>
                 {
@@ -105,6 +115,22 @@ namespace J3DX0H_GUI.WPFClient
                 }
                 );
                 SelectedAlbum = new Album();
+
+                NavToBands = new RelayCommand(() =>
+                {
+                    iBVWS.Open();
+                });
+
+                NavToMerch = new RelayCommand(() =>
+                {
+                    iMVWS.Open();
+                });
+
+                NavToRC = new RelayCommand(() =>
+                {
+                    iRCVWS.Open();
+                });
+
             }
         }
     }

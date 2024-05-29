@@ -65,6 +65,12 @@ namespace J3DX0H_GUI.Endpoint
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "J3DX0H_GUI.Endpoint v1"));
             }
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:14821"));
+
             app.UseRouting();
 
             app.UseAuthorization();

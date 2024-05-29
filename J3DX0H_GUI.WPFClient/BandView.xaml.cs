@@ -18,11 +18,18 @@ namespace J3DX0H_GUI.WPFClient
     /// <summary>
     /// Interaction logic for BandView.xaml
     /// </summary>
-    public partial class BandView : UserControl
+    public partial class BandView : Window
     {
         public BandView()
         {
             InitializeComponent();
+            BandViewModel bV = new BandViewModel();
+            this.DataContext = bV;
+        }
+
+        private void bV_EditedDone(object sender, EventArgs e)
+        {
+            this.DialogResult = true;
         }
     }
 }

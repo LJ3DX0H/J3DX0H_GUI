@@ -1,14 +1,14 @@
-﻿<UserControl x:Class="J3DX0H_GUI.WPFClient.MerchandiseView"
+﻿<Window x:Class="J3DX0H_GUI.WPFClient.MerchandiseView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:J3DX0H_GUI.WPFClient"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
+             d:DesignHeight="450" d:DesignWidth="800" Title="Merchandise Editor">
+    <Window.DataContext>
         <local:MerchandiseViewModel/>
-    </UserControl.DataContext>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -32,12 +32,5 @@
             <Button Content="Update Merch" Command="{Binding UpdateMerchandiseCommand}" Padding="10" Margin="20"/>
             <Label Content="{Binding ErrorMessage}" FontSize="24" Foreground="Red" HorizontalAlignment="Center" />
         </StackPanel>
-        <StackPanel>
-            <Label Content="ViewSelect" Background="LightBlue" Padding=" 20" FontSize="20"/>
-            <Button Content="Album" Padding="20" Margin="20" FontSize="20"/>
-            <Button Content="Merchandise" Padding="20" Margin="20" FontSize="20"/>
-            <Button Content="RecordCompany" Padding="20" Margin="20" FontSize="20"/>
-            <Button Content="Vm" Padding="20" Margin="20" FontSize="20"/>
-        </StackPanel>
     </Grid>
-</UserControl>
+</Window>

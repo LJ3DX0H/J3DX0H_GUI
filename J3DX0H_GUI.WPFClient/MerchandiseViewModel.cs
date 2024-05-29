@@ -69,7 +69,7 @@ namespace J3DX0H_GUI.WPFClient
             {
 
 
-                Merchandises = new RestCollection<Merchandise>("http://localhost:4237/", "Merchandise", "hub");
+                Merchandises = new RestCollection<Merchandise>("http://localhost:62997/", "Merchandise", "hub");
 
                 CreateMerchandiseCommand = new RelayCommand(() =>
                 {
