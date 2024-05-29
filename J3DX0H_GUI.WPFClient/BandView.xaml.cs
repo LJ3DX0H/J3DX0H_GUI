@@ -22,7 +22,7 @@ namespace J3DX0H_GUI.WPFClient
     {
         public BandView()
         {
-            InitializeComponent();
+            
             BandViewModel bV = new BandViewModel();
             this.DataContext = bV;
         }

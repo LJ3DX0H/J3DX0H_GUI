@@ -20,11 +20,8 @@ namespace J3DX0H_GUI.WPFClient
     /// </summary>
     public partial class AlbumView : Window
     {
-
-
         public AlbumView()
         {
-            InitializeComponent();
 
         }
     }

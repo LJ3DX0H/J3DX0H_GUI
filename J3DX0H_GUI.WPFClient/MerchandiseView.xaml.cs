@@ -22,7 +22,7 @@ namespace J3DX0H_GUI.WPFClient
     {
         public MerchandiseView()
         {
-            InitializeComponent();
+
             MerchandiseView mV = new MerchandiseView();
             this.DataContext = mV;
         }

@@ -1,5 +1,8 @@
 let albums = [];
 let connection = null;
+
+let albumIdToUpdate = -1;
+
 getdata();
 setupSignalR();
 
@@ -11,11 +14,15 @@ function setupSignalR() {
 
     connection.on("AlbumCreated", (user, message) => {
         getdata();
-    })
+    });
 
     connection.on("AlbumDeleted", (user, message) => {
         getdata();
-    })
+    });
+
+    connection.on("AlbumUpdated", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();
@@ -26,7 +33,7 @@ function setupSignalR() {
 async function start() {
     try {
         await connection.start();
-        console.log("SignalR Connected");
+        console.log("SignalR Connected.");
     }
     catch (err) {
         console.log(err);
@@ -52,6 +59,8 @@ function display() {
             + t.albumTitle + "</td><td>" +
             `<button type="button" onclick="remove(${t.albumId})">Delete</button>`
             + "</td></tr>";
+            `<button type="button" onclick="showupdate(${t.albumId})">Update</button>`
+            + "</td></tr>";
     });
 }
 
@@ -69,8 +78,16 @@ function remove(id) {
 
 }
 
+function showupdate(id) {
+    document.getElementById("uformdiv").style.display = 'none';
+    document.getElementById('albumtitletoupdate')).value = albums.find(t => t['id'] == id)['albumTitle'];
+    document.getElementById('uformdiv').style.display = 'flex';
+    albumIdToUpdate = id;
+
+}
+
 function create() {
-    let name = document.getElementById('albumname').value;
+    let name = document.getElementById('albumtitle').value;
     fetch('http://localhost:62997/album', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
@@ -83,10 +100,29 @@ function create() {
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
-
 }
+
+
+function update() {
+    let name = document.getElementById('albumtitletoupdate').value;
+    let id= 
+    fetch('http://localhost:62997/album', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { albumTitle: name, id: albumtitletoupdate })
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+}
+
+
 function myFunc2() {
-    location.replace("album.html")
+    location.replace("band.html")
 }
 function myFunc3() {
     location.replace("merchandise.html")

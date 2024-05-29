@@ -28,7 +28,7 @@ namespace J3DX0H_GUI.Endpoint.Controllers
         public RecordCompany Read(int id)
         {
             return rlogic.Read(id);
-        }
+        }   
 
         [HttpPost]
         public void Create([FromBody] RecordCompany rcompany)

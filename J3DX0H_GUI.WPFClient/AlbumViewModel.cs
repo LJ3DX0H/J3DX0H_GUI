@@ -80,7 +80,7 @@ namespace J3DX0H_GUI.WPFClient
             {
 
 
-                Albums = new RestCollection<Album>("http://localhost:62997/", "album", "hub");
+                Albums = new RestCollection<Album>("http://localhost:4237/", "album", "hub");
 
                 CreateAlbumCommand = new RelayCommand(() =>
                 {

@@ -11,11 +11,15 @@ function setupSignalR() {
 
     connection.on("RecordCompanyCreated", (user, message) => {
         getdata();
-    })
+    });
 
     connection.on("RecordCompanyDeleted", (user, message) => {
         getdata();
-    })
+    });
+    
+    connection.on("RecordCompanyUpdate", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();

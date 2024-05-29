@@ -11,11 +11,14 @@ function setupSignalR() {
 
     connection.on("BandCreated", (user, message) => {
         getdata();
-    })
+    });
 
     connection.on("BandDeleted", (user, message) => {
         getdata();
-    })
+    });
+    connection.on("BandUpdated", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();

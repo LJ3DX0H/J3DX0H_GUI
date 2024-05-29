@@ -11,11 +11,14 @@ function setupSignalR() {
 
     connection.on("MerchandiseCreated", (user, message) => {
         getdata();
-    })
+    });
 
     connection.on("MerchandiseDeleted", (user, message) => {
         getdata();
-    })
+    });
+    connection.on("MerchandiseUpdate", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();
